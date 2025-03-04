@@ -48,7 +48,7 @@ sudo apt update && sudo apt install gh fzf gawk bsdmainutils xdg-utils
 sudo yum install gh fzf gawk util-linux xdg-utils
 ```
 
-### Install `gh-repos` with Homebrew
+### Install `gh-repos` with Homebrew(Not Provided now.)
 
 You can install `gh-repos` directly using Homebrew:
 
@@ -73,10 +73,10 @@ brew install gh-repos
 
 ### One-Liner Installation
 
-To install everything automatically (for macOS/Linux with Homebrew), run:
+To install everything automatically (for macOS/Linux), run:
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/aki-mia/gh-repos/main/install.sh)"
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/aki-mia/gh-repos/main/install.sh)"
 ```
 
 ## 🔧 Usage

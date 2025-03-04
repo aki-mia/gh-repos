@@ -6,7 +6,7 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${GREEN}🔍 Installing MyRepos...${NC}"
+echo -e "${GREEN}🔍 Installing gh-repos...${NC}"
 
 # Detect OS
 OS="$(uname -s)"
@@ -35,30 +35,29 @@ elif [[ "$OS_TYPE" == "Linux" ]]; then
     fi
 else
     echo -e "${RED}Unsupported OS. Please install gh and fzf manually.${NC}"
-    exit 1
 fi
 
 # Clone the repository and set up the script
-REPO_DIR="$HOME/.myrepos"
+REPO_DIR="$HOME/.gh-repos"
 if [ -d "$REPO_DIR" ]; then
-    echo -e "${YELLOW}Updating existing MyRepos installation...${NC}"
+    echo -e "${YELLOW}Updating existing gh-repos installation...${NC}"
     cd "$REPO_DIR" && git pull
 else
-    echo -e "${YELLOW}Cloning MyRepos repository...${NC}"
-    git clone https://github.com/yourusername/myrepos.git "$REPO_DIR"
+    echo -e "${YELLOW}Cloning gh-repos repository...${NC}"
+    git clone https://github.com/aki-mia/gh-repos.git "$REPO_DIR"
 fi
 
 # Add to shell configuration
-echo -e "${YELLOW}Adding MyRepos to shell configuration...${NC}"
+echo -e "${YELLOW}Adding gh-repos to shell configuration...${NC}"
 SHELL_CONFIG="$HOME/.zshrc"
 if [[ "$SHELL" == *"bash"* ]]; then
     SHELL_CONFIG="$HOME/.bashrc"
 fi
 
-if ! grep -q "source $REPO_DIR/myrepos.zsh" "$SHELL_CONFIG"; then
-    echo "source $REPO_DIR/myrepos.zsh" >> "$SHELL_CONFIG"
+if ! grep -q "source $REPO_DIR/gh-repos.zsh" "$SHELL_CONFIG"; then
+    echo "source $REPO_DIR/gh-repos.zsh" >> "$SHELL_CONFIG"
 fi
 
 source "$SHELL_CONFIG"
 
-echo -e "${GREEN}✅ Installation complete! Run 'myrepos' to start.${NC}"
+echo -e "${GREEN}✅ Installation complete! Run 'gh-repos' to start.${NC}"
