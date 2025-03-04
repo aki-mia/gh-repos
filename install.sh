@@ -49,9 +49,12 @@ fi
 
 # Add to shell configuration
 echo -e "${YELLOW}Adding gh-repos to shell configuration...${NC}"
-SHELL_CONFIG="$HOME/.zshrc"
-if [[ "$SHELL" == *"bash"* ]]; then
+if [ -n "$ZSH_VERSION" ]; then
+    SHELL_CONFIG="$HOME/.zshrc"
+elif [ -n "$BASH_VERSION" ]; then
     SHELL_CONFIG="$HOME/.bashrc"
+else
+    SHELL_CONFIG="$HOME/.profile"
 fi
 
 if ! grep -q "source $REPO_DIR/gh-repos.zsh" "$SHELL_CONFIG"; then
