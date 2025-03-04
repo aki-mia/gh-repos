@@ -102,18 +102,18 @@ Then:
 
 NAME                                              | INFO               | UPDATED
 -------------------------------------------------------------------------------------
-📌 PR  ExampleOrg/example-repo                    | private            | Mar 24, 2023
+ExampleOrg/example-repo                    | private            | Mar 24, 2023
 ExampleOrg/tools-repo                             | public fork        | Apr 18, 2023
 ```
 
 ### Options
 
-| Option                | Description                                                    |
-| --------------------- | -------------------------------------------------------------- |
-| `-l, --limit <num>` | Set the maximum number of repositories to fetch (default: 100) |
-| `-o, --open`        | Enable selection of a repository to open in the browser        |
-| `-p, --check-pr`    | Enable fetching PRs for each repository (slower)               |
-| `-h, --help`        | Show this help message                                         |
+| Option                | Description                                                                                                                                                                                                                                                                                                                      |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-l, --limit <num>` | Set the maximum number of repositories to fetch (default: 100)<br />Note: Only the first `<num>` repositories returned by the GitHub API are processed.<br />This means that if there are additional repositories with more recent updates beyond this limit, they will not be displayed. Increase the limit to include them. |
+| `-o, --open`        | Enable selection of a repository to open in the browser                                                                                                                                                                                                                                                                          |
+| `-p, --check-pr`    | Only display repositories with PRs assigned to you.<br />If none exist, a message is shown.                                                                                                                                                                                                                                      |
+| `-h, --help`        | Show this help message                                                                                                                                                                                                                                                                                                           |
 
 ### Open a Repository in Browser
 
