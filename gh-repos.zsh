@@ -213,8 +213,8 @@ gh_my_repos() {
     echo -e "${cyan}🔍 Searching for my personal repositories...${reset}"
     local user_login
     user_login=$(gh api user --jq .login)
-    repos_data=$(gh repo list --limit "$limit" --json name,owner,visibility,isFork,updatedAt --jq \
-      '.[] | select(.owner.login == "'"$user_login"'") | [.owner.login + "/" + .name, .visibility, .isFork, .updatedAt] | @tsv')
+    repos_data=$(gh repo list --limit "$limit" --json name,owner,visibility,isFork,updatedAt,isPrivate --jq \
+      '.[] | select(.owner.login == "'"$user_login"'") | [.owner.login + "/" + .name, .isPrivate, .isFork, .updatedAt] | @tsv')
   else
     local ORG_NAME
     ORG_NAME=$(gh api user/memberships/orgs --jq '.[].organization.login' | fzf --prompt="Select Organization: " --height=10)
@@ -230,8 +230,8 @@ gh_my_repos() {
 
     if [[ -z "$USER_TEAMS" ]]; then
       echo -e "${yellow}⚠️ No teams found in this organization. Displaying all repositories.${reset}"
-      repos_data=$(gh repo list "$ORG_NAME" --limit "$limit" --json name,owner,visibility,isFork,updatedAt --jq \
-        '.[] | [.owner.login + "/" + .name, .visibility, .isFork, .updatedAt] | @tsv')
+      repos_data=$(gh repo list "$ORG_NAME" --limit "$limit" --json name,owner,visibility,isFork,updatedAt,isPrivate --jq \
+        '.[] | [.owner.login + "/" + .name, .isPrivate, .isFork, .updatedAt] | @tsv')
     else
       local TEAM_SLUG
       TEAM_SLUG=$(echo "$USER_TEAMS" | fzf --prompt="Select Team: " --height=10)
@@ -264,7 +264,7 @@ gh_my_repos() {
   fi
 
   echo ""
-  echo -e "${bold}${underline}NAME                                              | INFO               | UPDATED${reset}"
+  echo -e "${bold}${underline}NAME                                              | VISIBILITY               | UPDATED${reset}"
   echo "-------------------------------------------------------------------------------------"
 
   while IFS=$'\t' read -r name formatted_info relative_time_str epoch pr_flag; do
