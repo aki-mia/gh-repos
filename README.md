@@ -39,7 +39,6 @@ To install everything automatically (for macOS/Linux), run:
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/aki-mia/gh-repos/main/install.sh)"
 ```
 
-
 ### Install `gh-repos` with Homebrew(Not Provided now.)
 
 You can install `gh-repos` directly using Homebrew:
@@ -56,25 +55,24 @@ brew install gh-repos
    ```sh
    brew install gh fzf gawk coreutils
    ```
-
 2. Install with apt (Debian/Ubuntu)
 
    ```sh
    sudo apt update && sudo apt install gh fzf gawk bsdmainutils xdg-utils
    ```
-
 3. Install with yum (RHEL/CentOS)
 
    ```sh
    sudo yum install gh fzf gawk util-linux xdg-utils
    ```
-
 4. Clone this repository:
+
    ```sh
    git clone https://github.com/aki-mia/gh-repos.git
    cd gh-repos
    ```
 5. Add the script to your `.zshrc` or `.bashrc`:
+
    ```sh
    echo 'source /path/to/gh-repos.zsh' >> ~/.zshrc
    echo 'alias gh-repos="gh_repos"' >> ~/.zshrc
@@ -143,8 +141,8 @@ If you installed it manually, remove it by:
 
 ```sh
 rm -rf ~/.gh-repos
-sed -i '/gh-repos/d' ~/.zshrc ~/.bashrc
-source ~/.zshrc 2>/dev/null || source ~/.bashrc 2>/dev/null
+sudo sed -i '' '/gh-repos/d' ~/.zshrc
+source ~/.zshrc 2>/dev/null
 ```
 
 ## 📜 License
