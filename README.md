@@ -30,23 +30,15 @@ Ensure you have the following tools installed:
 | `open`     | Opens repository in browser (macOS)         | Built-in on macOS                                                     |
 | `xdg-open` | Opens repository in browser (Linux)         | `xdg-utils` (Linux)                                                 |
 
-#### Install with Homebrew (macOS/Linux)
+### One-Liner Installation
+
+To install everything automatically (for macOS/Linux), run:
+**Installation requires [homebrew](https://brew.sh/) on macOS.**
 
 ```sh
-brew install gh fzf gawk coreutils
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/aki-mia/gh-repos/main/install.sh)"
 ```
 
-#### Install with apt (Debian/Ubuntu)
-
-```sh
-sudo apt update && sudo apt install gh fzf gawk bsdmainutils xdg-utils
-```
-
-#### Install with yum (RHEL/CentOS)
-
-```sh
-sudo yum install gh fzf gawk util-linux xdg-utils
-```
 
 ### Install `gh-repos` with Homebrew(Not Provided now.)
 
@@ -59,25 +51,35 @@ brew install gh-repos
 
 ### Script Installation (Manual)
 
-1. Clone this repository:
+1. Install with Homebrew (macOS/Linux)
+
+   ```sh
+   brew install gh fzf gawk coreutils
+   ```
+
+2. Install with apt (Debian/Ubuntu)
+
+   ```sh
+   sudo apt update && sudo apt install gh fzf gawk bsdmainutils xdg-utils
+   ```
+
+3. Install with yum (RHEL/CentOS)
+
+   ```sh
+   sudo yum install gh fzf gawk util-linux xdg-utils
+   ```
+
+4. Clone this repository:
    ```sh
    git clone https://github.com/aki-mia/gh-repos.git
    cd gh-repos
    ```
-2. Add the script to your `.zshrc` or `.bashrc`:
+5. Add the script to your `.zshrc` or `.bashrc`:
    ```sh
    echo 'source /path/to/gh-repos.zsh' >> ~/.zshrc
    echo 'alias gh-repos="gh_repos"' >> ~/.zshrc
    source ~/.zshrc
    ```
-
-### One-Liner Installation
-
-To install everything automatically (for macOS/Linux), run:
-
-```sh
-/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/aki-mia/gh-repos/main/install.sh)"
-```
 
 ## 🔧 Usage
 
@@ -135,9 +137,7 @@ gh-repos --limit 200
 
 This fetches up to **200 repositories** instead.
 
-
 ## ❌ Uninstalling `gh-repos`
-
 
 If you installed it manually, remove it by:
 
@@ -146,7 +146,6 @@ rm -rf ~/.gh-repos
 sed -i '/gh-repos/d' ~/.zshrc ~/.bashrc
 source ~/.zshrc 2>/dev/null || source ~/.bashrc 2>/dev/null
 ```
-
 
 ## 📜 License
 

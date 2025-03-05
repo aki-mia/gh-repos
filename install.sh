@@ -21,14 +21,14 @@ echo -e "${YELLOW}Detected OS: $OS_TYPE${NC}"
 # Install dependencies
 if [[ "$OS_TYPE" == "macOS" ]]; then
     echo -e "${YELLOW}Installing dependencies using Homebrew...${NC}"
-    brew install gh fzf
+    brew install gh fzf gawk coreutils
 elif [[ "$OS_TYPE" == "Linux" ]]; then
     if command -v apt > /dev/null; then
         echo -e "${YELLOW}Installing dependencies using apt...${NC}"
-        sudo apt update && sudo apt install -y gh fzf
+        sudo apt update && sudo apt install gh fzf gawk bsdmainutils xdg-utils
     elif command -v yum > /dev/null; then
         echo -e "${YELLOW}Installing dependencies using yum...${NC}"
-        sudo yum install -y gh fzf
+        sudo yum install gh fzf gawk util-linux xdg-utils
     else
         echo -e "${RED}Unsupported Linux distribution. Please install gh and fzf manually.${NC}"
         exit 1
@@ -63,4 +63,4 @@ fi
 
 source "$SHELL_CONFIG"
 
-echo -e "${GREEN}✅ Installation complete! Run 'gh-repos' to start.${NC}"
+echo -e "${GREEN}✅ Installation complete! Restart your terminal and Run 'gh-repos' to start.${NC}"
